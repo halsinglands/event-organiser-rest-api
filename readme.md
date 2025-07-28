@@ -1,6 +1,6 @@
 # Event Organiser REST API
 
-**version 0.1.0-alpha**
+**version 0.1.1-alpha**
 
 ## Endpoints
 

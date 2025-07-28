@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Event Organiser Rest API
  * Plugin URI: http://www.wp-event-organiser.com
- * Version: 0.1.0
+ * Version: 0.1.1
  * Author: Stephen Harris
  */
 
@@ -26,7 +26,6 @@ add_action( 'plugins_loaded', function() {
 
 } );
 
-
 function eventorganiser_restapi_not_active_notice() {
 	?>
 	<div class="notice-error notice is-dismissible">
@@ -41,6 +40,9 @@ function eventorganiser_init_restapi(){
 }
 
 add_filter( 'eventorganiser_event_properties', function( $args ) {
+	if ( ! is_array( $args ) ) {
+		$args = array();
+	}
 	$args = array_merge( array(
 		'rest_base'             => 'events',
 		'show_in_rest'          => true,
@@ -50,6 +52,9 @@ add_filter( 'eventorganiser_event_properties', function( $args ) {
 } );
 
 add_filter( 'eventorganiser_register_taxonomy_event-category', function( $args ) {
+	if ( ! is_array( $args ) ) {
+		$args = array();
+	}
 	$args = array_merge( array(
 		'show_in_rest'          => true,
 		'rest_base'             => 'event-categories',
@@ -59,6 +64,9 @@ add_filter( 'eventorganiser_register_taxonomy_event-category', function( $args )
 } );
 
 add_filter( 'eventorganiser_register_taxonomy_event-tag', function( $args ) {
+	if ( ! is_array( $args ) ) {
+		$args = array();
+	}
 	$args = array_merge( array(
 		'show_in_rest'          => true,
 		'rest_base'             => 'event-tags',
@@ -68,6 +76,9 @@ add_filter( 'eventorganiser_register_taxonomy_event-tag', function( $args ) {
 } );
 
 add_filter( 'eventorganiser_register_taxonomy_event-venue', function( $args ) {
+	if ( ! is_array( $args ) ) {
+		$args = array();
+	}
 	$args = array_merge( array(
 		'show_in_rest'          => true,
 		'rest_base'             => 'event-venues',
@@ -75,8 +86,3 @@ add_filter( 'eventorganiser_register_taxonomy_event-venue', function( $args ) {
 	), $args ); 
 	return $args;
 } );
-
-
-
-
-
